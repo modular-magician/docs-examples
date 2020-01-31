@@ -6,10 +6,11 @@ resource "google_compute_region_backend_service" "default" {
   backend {
     group          = google_compute_region_instance_group_manager.rigm.instance_group
     balancing_mode = "UTILIZATION"
+    capacity_scaler = 1.0
   }
 
   region      = "us-central1"
-  name        = "region-backend-service-${local.name_suffix}"
+  name        = "tf-test-rbs-${local.name_suffix}"
   protocol    = "HTTP"
   timeout_sec = 10
 
@@ -27,7 +28,7 @@ resource "google_compute_region_instance_group_manager" "rigm" {
   provider = google-beta
 
   region   = "us-central1"
-  name     = "rigm-internal"
+  name     = "tf-test-rigm-${local.name_suffix}"
   version {
     instance_template = google_compute_instance_template.instance_template.self_link
     name              = "primary"
@@ -39,7 +40,7 @@ resource "google_compute_region_instance_group_manager" "rigm" {
 resource "google_compute_instance_template" "instance_template" {
   provider     = google-beta
 
-  name         = "template-region-backend-service-${local.name_suffix}"
+  name         = "template-tf-test-rbs-${local.name_suffix}"
   machine_type = "n1-standard-1"
 
   network_interface {
@@ -60,7 +61,7 @@ resource "google_compute_region_health_check" "default" {
   provider = google-beta
 
   region = "us-central1"
-  name   = "health-check-${local.name_suffix}"
+  name   = "tf-test-hc-${local.name_suffix}"
   http_health_check {
     port_specification = "USE_SERVING_PORT"
   }
@@ -69,7 +70,7 @@ resource "google_compute_region_health_check" "default" {
 resource "google_compute_network" "default" {
   provider = google-beta
 
-  name                    = "net-${local.name_suffix}"
+  name                    = "tf-test-net-${local.name_suffix}"
   auto_create_subnetworks = false
   routing_mode            = "REGIONAL"
 }
@@ -77,7 +78,7 @@ resource "google_compute_network" "default" {
 resource "google_compute_subnetwork" "default" {
   provider = google-beta
 
-  name          = "net-${local.name_suffix}-default"
+  name          = "tf-test-net-${local.name_suffix}-default"
   ip_cidr_range = "10.1.2.0/24"
   region        = "us-central1"
   network       = google_compute_network.default.self_link
