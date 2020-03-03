@@ -9,7 +9,7 @@ resource "google_bigtable_instance" "instance" {
 }
 
 resource "google_bigtable_app_profile" "ap" {
-  instance       = google_bigtable_instance.instance.name
+  instance       = google_bigtable_instance.instance.id
   app_profile_id = "bt-profile-${local.name_suffix}"
 
   multi_cluster_routing_use_any = true
