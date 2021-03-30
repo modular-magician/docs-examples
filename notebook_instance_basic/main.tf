@@ -6,4 +6,7 @@ resource "google_notebooks_instance" "instance" {
     project      = "deeplearning-platform-release"
     image_family = "tf-latest-cpu"
   }
+  labels = {
+    goog-caip-notebook = ""
+  }
 }

@@ -10,4 +10,8 @@ resource "google_notebooks_instance" "instance" {
     repository = "gcr.io/deeplearning-platform-release/base-cpu"
     tag = "latest"
   }
+  labels = {
+    k = "val"
+    goog-caip-notebook = ""
+  }
 }
