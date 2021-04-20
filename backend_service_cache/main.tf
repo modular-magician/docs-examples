@@ -1,4 +1,5 @@
 resource "google_compute_backend_service" "default" {
+  provider      = google-beta
   name          = "backend-service-${local.name_suffix}"
   health_checks = [google_compute_http_health_check.default.id]
   enable_cdn  = true
@@ -13,6 +14,7 @@ resource "google_compute_backend_service" "default" {
 }
 
 resource "google_compute_http_health_check" "default" {
+  provider           = google-beta
   name               = "health-check-${local.name_suffix}"
   request_path       = "/"
   check_interval_sec = 1
