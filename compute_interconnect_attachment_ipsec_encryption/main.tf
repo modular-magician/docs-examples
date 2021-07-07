@@ -1,4 +1,5 @@
 resource "google_compute_interconnect_attachment" "ipsec-encrypted-interconnect-attachment" {
+  provider = google-beta
   name                     = "test-interconnect-attachment-${local.name_suffix}"
   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
   type                     = "PARTNER"
@@ -10,6 +11,7 @@ resource "google_compute_interconnect_attachment" "ipsec-encrypted-interconnect-
 }
 
 resource "google_compute_address" "address" {
+  provider = google-beta
   name          = "test-address-${local.name_suffix}"
   address_type  = "INTERNAL"
   purpose       = "IPSEC_INTERCONNECT"
@@ -19,6 +21,7 @@ resource "google_compute_address" "address" {
 }
 
 resource "google_compute_router" "router" {
+  provider = google-beta
   name                          = "test-router-${local.name_suffix}"
   network                       = google_compute_network.network.name
   encrypted_interconnect_router = true
@@ -28,6 +31,7 @@ resource "google_compute_router" "router" {
 }
 
 resource "google_compute_network" "network" {
+  provider = google-beta
   name                    = "test-network-${local.name_suffix}"
   auto_create_subnetworks = false
 }
