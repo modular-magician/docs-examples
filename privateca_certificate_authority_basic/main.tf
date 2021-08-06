@@ -1,9 +1,9 @@
 resource "google_privateca_certificate_authority" "default" {
   // This example assumes this pool already exists.
   // Pools cannot be deleted in normal test circumstances, so we depend on static pools
-  pool = ""
+  pool = "ca-pool-${local.name_suffix}"
   certificate_authority_id = "my-certificate-authority-${local.name_suffix}"
-  location = "us-central1"
+  location = "us-central1-${local.name_suffix}"
   config {
     subject_config {
       subject {
