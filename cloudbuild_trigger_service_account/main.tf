@@ -1,6 +1,8 @@
 data "google_project" "project" {}
 
 resource "google_cloudbuild_trigger" "service-account-trigger" {
+  location = "global"
+
   trigger_template {
     branch_name = "main"
     repo_name   = "my-repo"

@@ -1,5 +1,6 @@
 
 resource "google_cloudbuild_trigger" "manual-trigger" {
+  location    = "us-west4"
   name        = "manual-build"
 
   source_to_build {
