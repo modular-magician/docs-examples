@@ -4,6 +4,9 @@ resource "google_compute_interconnect_attachment" "on_prem" {
   type                     = "PARTNER"
   router                   = google_compute_router.foobar.id
   mtu                      = 1500
+  labels                   = {
+    "foo" = "bar"
+  }
 }
 
 resource "google_compute_router" "foobar" {

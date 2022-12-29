@@ -7,6 +7,9 @@ resource "google_compute_interconnect_attachment" "ipsec-encrypted-interconnect-
   ipsec_internal_addresses = [
     google_compute_address.address.self_link,
   ]
+  labels                   = {
+    "foo" = "bar"
+  }
 }
 
 resource "google_compute_address" "address" {
