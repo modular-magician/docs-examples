@@ -6,7 +6,7 @@ resource "google_api_gateway_api" "api_cfg" {
 resource "google_api_gateway_api_config" "api_cfg" {
   provider = google-beta
   api = google_api_gateway_api.api_cfg.api_id
-  api_config_id = "cfg-${local.name_suffix}"
+  api_config_id_prefix = "cfg--${local.name_suffix}"
 
   openapi_documents {
     document {
