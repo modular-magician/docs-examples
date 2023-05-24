@@ -4,7 +4,7 @@ resource "google_project_service" "servicenetworking" {
   service = "servicenetworking.googleapis.com"
   disable_on_destroy = false
 }
- 
+
 data "google_compute_network" "vpc_network" {
     name       = "vpc-network-${local.name_suffix}"
     depends_on = [google_project_service.servicenetworking]
@@ -26,7 +26,7 @@ resource "google_service_networking_connection" "default" {
 }
 
 resource "google_cloudbuild_bitbucket_server_config" "bbs-config-with-peered-network" {
-    config_id = "mybbsconfig"
+    config_id = "my-bbsconfig-${local.name_suffix}"
     location = "us-central1"
     host_uri = "https://bbs.com"
     secrets {
