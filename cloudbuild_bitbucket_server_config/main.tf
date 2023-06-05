@@ -1,5 +1,5 @@
 resource "google_cloudbuild_bitbucket_server_config" "bbs-config" {
-    config_id = "bbs-config-${local.name_suffix}"
+    config_id = "mybbsconfig"
     location = "us-central1"
     host_uri = "https://bbs.com"
     secrets {
