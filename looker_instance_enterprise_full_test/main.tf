@@ -10,7 +10,7 @@ resource "google_looker_instance" "looker-instance" {
     allowed_email_domains = ["google.com"]
   }
   encryption_config {
-    kms_key_name = "looker-kms-key-${local.name_suffix}"
+    kms_key_name = "projects/YOURPROJECT/locations/LOCATION/keyRings/KEYRING/cryptoKeys/looker-kms-key-${local.name_suffix}"
   }
   maintenance_window {
     day_of_week = "THURSDAY"
@@ -56,7 +56,7 @@ data "google_compute_network" "looker_network" {
 }
 
 resource "google_kms_crypto_key_iam_member" "crypto_key" {
-  crypto_key_id = "looker-kms-key-${local.name_suffix}"
+  crypto_key_id = "projects/YOURPROJECT/locations/LOCATION/keyRings/KEYRING/cryptoKeys/looker-kms-key-${local.name_suffix}"
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member        = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-looker.iam.gserviceaccount.com"
 }
