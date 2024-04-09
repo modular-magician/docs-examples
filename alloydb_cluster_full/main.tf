@@ -39,6 +39,18 @@ resource "google_alloydb_cluster" "full" {
     }
   }
 
+  maintenance_update_policy {
+    maintenance_windows {
+      day = "WEDNESDAY"
+      start_time {
+        hours = 12
+        minutes = 0
+        seconds = 0
+        nanos = 0
+      }
+    }
+  }
+  
   labels = {
     test = "alloydb-cluster-full-${local.name_suffix}"
   }
