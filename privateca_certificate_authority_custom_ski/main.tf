@@ -1,4 +1,11 @@
+resource "google_project_service_identity" "privateca_sa" {
+  provider = google-beta
+  service = "privateca.googleapis.com"
+}
+
 resource "google_privateca_certificate_authority" "default" {
+  provider = google-beta
+
  // This example assumes this pool already exists.
  // Pools cannot be deleted in normal test circumstances, so we depend on static pools
   pool = "ca-pool-${local.name_suffix}"
@@ -48,4 +55,6 @@ resource "google_privateca_certificate_authority" "default" {
   key_spec {
     cloud_kms_key_version = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key-${local.name_suffix}/cryptoKeyVersions/1"
   }
+
+  depends_on = [google_project_service_identity.privateca_sa]
 }
