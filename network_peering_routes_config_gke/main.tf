@@ -51,3 +51,10 @@ resource "google_container_cluster" "private_cluster" {
   }
   deletion_protection  = "false"
 }
+
+check "peering_name_present" {
+  assert {
+    condition     = google_container_cluster.private_cluster.private_cluster_config[0].peering_name != ""
+    error_message = "google_container_cluster.private_cluster.private_cluster_config[0].peering_name needs to return a name"
+  }
+}
