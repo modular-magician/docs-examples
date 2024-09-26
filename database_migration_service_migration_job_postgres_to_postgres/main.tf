@@ -85,5 +85,3 @@ resource "google_database_migration_service_migration_job" "psqltopsql" {
   destination     = google_database_migration_service_connection_profile.destination_cp.name
   type            = "CONTINUOUS"
 }
-
-
