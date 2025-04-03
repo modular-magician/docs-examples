@@ -16,4 +16,5 @@ resource "google_dataproc_metastore_service" "default" {
   labels = {
     env = "test"
   }
+  deletion_protection = false
 }
