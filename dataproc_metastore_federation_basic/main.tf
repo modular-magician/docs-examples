@@ -20,5 +20,4 @@ resource "google_dataproc_metastore_service" "default" {
     version           = "3.1.2"
     endpoint_protocol = "GRPC"
   }
-  deletion_protection = false
 }
