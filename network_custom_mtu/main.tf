@@ -1,4 +1,6 @@
 resource "google_compute_network" "vpc_network" {
-  name = "vpc-network-${local.name_suffix}"
-  mtu  = 1500
+  project                 = "PROJECT_NAME"
+  name                    = "vpc-network-${local.name_suffix}"
+  auto_create_subnetworks = true
+  mtu                     = 1460
 }

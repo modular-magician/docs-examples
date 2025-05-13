@@ -1,0 +1,41 @@
+resource "google_project" "project" {
+  project_id      = "my-project-${local.name_suffix}"
+  name            = "my-project-${local.name_suffix}"
+  org_id          = "ORG_ID"
+  billing_account = "BILLING_ACCT"
+  deletion_policy = "DELETE"
+}
+
+resource "google_project_service" "apigee" {
+  project = google_project.project.project_id
+  service = "apigee.googleapis.com"
+}
+
+resource "google_apigee_organization" "apigee_org" {
+  analytics_region   = "us-central1"
+  project_id         = google_project.project.project_id
+
+  runtime_type       = "HYBRID"
+  depends_on         = [google_project_service.apigee]
+}
+
+resource "google_service_account" "service_account" {
+  account_id   = "my-account-${local.name_suffix}"
+  display_name = "Service Account"
+}
+
+resource "google_project_iam_member" "synchronizer-iam" {
+  project = google_project.project.project_id
+  role    = "roles/apigee.synchronizerManager"
+  member = "serviceAccount:${google_service_account.service_account.email}"
+}
+
+resource "google_apigee_control_plane_access" "apigee_control_plane_access" {
+  name       = google_apigee_organization.apigee_org.name
+  synchronizer_identities = [
+    "serviceAccount:${google_service_account.service_account.email}",
+  ]
+  analytics_publisher_identities = [
+    "serviceAccount:${google_service_account.service_account.email}",
+  ]
+}

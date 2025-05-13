@@ -1,6 +1,6 @@
 resource "google_network_security_address_group" "default" {
-  provider    = google-beta
   name        = "my-address-groups-${local.name_suffix}"
+  parent      = "projects/PROJECT_NAME"
   location    = "us-central1"
   description = "my description"
   type        = "IPV4"

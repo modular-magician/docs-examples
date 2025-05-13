@@ -1,0 +1,13 @@
+resource "google_vmwareengine_network" "network-policy-nw" {
+    name              = "sample-network-${local.name_suffix}"
+    location          = "global" 
+    type              = "STANDARD"
+    description       = "VMwareEngine standard network sample"
+}
+
+resource "google_vmwareengine_network_policy" "vmw-engine-network-policy" {
+    location = "REGION"
+    name = "sample-network-policy-${local.name_suffix}"
+    edge_services_cidr = "192.168.30.0/26"
+    vmware_engine_network = google_vmwareengine_network.network-policy-nw.id
+}
