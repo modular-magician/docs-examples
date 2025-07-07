@@ -21,8 +21,5 @@ resource "google_secure_source_manager_repository" "default" {
       readme = "default"
     }
 
-    # Prevent accidental deletions.
-    lifecycle {
-      prevent_destroy = "false"
-    }
+    deletion_protection = "false"
 }
