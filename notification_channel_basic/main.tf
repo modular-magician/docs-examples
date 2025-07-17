@@ -1,3 +1,7 @@
+provider "google" {
+  add_terraform_attribution_label = false
+}
+
 resource "google_monitoring_notification_channel" "basic" {
   display_name = "Test Notification Channel-${local.name_suffix}"
   type         = "email"
