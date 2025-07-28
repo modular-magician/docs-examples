@@ -20,6 +20,9 @@ resource "google_redis_cluster" "cluster-ha-single-zone" {
       }
     }
   }
+  managed_backup_source {
+    backup = "projects/{project}/regions/{region}/backupCollections/{collection}/backups/{backup}"
+  }
   deletion_protection_enabled = false
   depends_on = [
     google_network_connectivity_service_connection_policy.default
