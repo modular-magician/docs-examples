@@ -19,4 +19,6 @@ resource "google_pubsub_subscription" "example" {
       x-goog-version = "v1"
     }
   }
+
+  deletion_protection = false
 }
