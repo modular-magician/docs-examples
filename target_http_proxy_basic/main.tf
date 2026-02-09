@@ -1,6 +1,7 @@
 resource "google_compute_target_http_proxy" "default" {
   name    = "test-proxy-${local.name_suffix}"
   url_map = google_compute_url_map.default.id
+  http_filters = []
 }
 
 resource "google_compute_url_map" "default" {
