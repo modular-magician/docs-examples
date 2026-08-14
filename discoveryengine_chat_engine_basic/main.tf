@@ -1,6 +1,6 @@
 resource "google_discovery_engine_data_store" "test_data_store" {
   location                    = "global"
-  data_store_id               = "data-store-${local.name_suffix}"
+  data_store_id               = "data-store-3-${local.name_suffix}"
   display_name                = "Structured datastore"
   industry_vertical           = "GENERIC"
   content_config              = "NO_CONTENT"
@@ -20,7 +20,7 @@ resource "google_discovery_engine_chat_engine" "primary" {
   engine_id = "chat-engine-id-${local.name_suffix}"
   collection_id = "default_collection"
   location = google_discovery_engine_data_store.test_data_store.location
-  display_name = "Chat engine"
+  display_name = "chat-engine-id-${local.name_suffix}"
   industry_vertical = "GENERIC"
   data_store_ids = [google_discovery_engine_data_store.test_data_store.data_store_id, google_discovery_engine_data_store.test_data_store_2.data_store_id]
   common_config {
