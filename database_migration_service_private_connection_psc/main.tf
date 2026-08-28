@@ -1,5 +1,5 @@
 resource "google_database_migration_service_private_connection" "default" {
-	display_name          = "dbms_pc"
+	display_name          = "dbms-pc"
 	location              = "us-west1"
 	private_connection_id = "my-connection-${local.name_suffix}"
 
