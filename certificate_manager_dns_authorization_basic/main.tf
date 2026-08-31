@@ -1,4 +1,4 @@
-resource "google_certificate_manager_dns_authorization" "default" {
+resource "google_certificate_manager_dns_authorization" "" {
   name        = "dns-auth-${local.name_suffix}"
   location    = "global"
   description = "The default dns"
@@ -6,13 +6,13 @@ resource "google_certificate_manager_dns_authorization" "default" {
 }
 
 output "record_name_to_insert" {
- value = google_certificate_manager_dns_authorization.default.dns_resource_record.0.name
+ value = google_certificate_manager_dns_authorization..dns_resource_record.0.name
 }
 
 output "record_type_to_insert" {
- value = google_certificate_manager_dns_authorization.default.dns_resource_record.0.type
+ value = google_certificate_manager_dns_authorization..dns_resource_record.0.type
 }
 
 output "record_data_to_insert" {
- value = google_certificate_manager_dns_authorization.default.dns_resource_record.0.data
+ value = google_certificate_manager_dns_authorization..dns_resource_record.0.data
 }

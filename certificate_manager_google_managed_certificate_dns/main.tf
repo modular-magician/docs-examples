@@ -1,4 +1,4 @@
-resource "google_certificate_manager_certificate" "default" {
+resource "google_certificate_manager_certificate" "" {
   name        = "dns-cert-${local.name_suffix}"
   description = "The default cert"
   scope       = "EDGE_CACHE"
