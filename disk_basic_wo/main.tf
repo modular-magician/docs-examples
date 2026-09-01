@@ -6,9 +6,9 @@ resource "google_compute_disk" "default" {
   labels = {
     environment = "dev"
   }
+  physical_block_size_bytes = 4096
   disk_encryption_key {
-    raw_key_wo = "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
+    raw_key_wo         = "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
     raw_key_wo_version = 1
   }
-  physical_block_size_bytes = 4096
 }
