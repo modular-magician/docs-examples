@@ -2,7 +2,6 @@ resource "google_compute_region_target_tcp_proxy" "default" {
   name                  = "test-proxy-${local.name_suffix}"
   region                = "europe-west4"
   load_balancing_scheme = "EXTERNAL_MANAGED"
-  backend_service       = google_compute_region_backend_service.default.id
 }
 
 resource "google_compute_region_backend_service" "default" {
@@ -22,5 +21,25 @@ resource "google_compute_region_health_check" "default" {
   check_interval_sec = 1
   tcp_health_check {
     port = "80"
+  }
+}
+
+resource "google_network_services_tls_route" "default" {
+  name     = "tls-route-check-${local.name_suffix}"
+  location = "europe-west4"
+
+  target_proxies = [
+    google_compute_region_target_tcp_proxy.default.self_link
+  ]
+
+  rules {
+    matches {
+      sni_host = ["example.com"]
+    }
+    action {
+      destinations {
+        service_name = google_compute_region_backend_service.default.self_link
+      }
+    }
   }
 }
