@@ -46,7 +46,7 @@ resource "google_compute_network" "default" {
 resource "google_database_migration_service_connection_profile" "existing-alloydb" {
   location              = "us-central1"
   connection_profile_id = "destination-cp-${local.name_suffix}"
-  display_name          = "destination-cp-${local.name_suffix}_display"
+  display_name          = "destination-cp-${local.name_suffix}-display"
   labels = {
     foo = "bar"
   }

@@ -14,7 +14,7 @@ resource "google_sql_database_instance" "destination_csql" {
 resource "google_database_migration_service_connection_profile" "existing-psql" {
   location              = "us-central1"
   connection_profile_id = "destination-cp-${local.name_suffix}"
-  display_name          = "destination-cp-${local.name_suffix}_display"
+  display_name          = "destination-cp-${local.name_suffix}-display"
   labels = {
     foo = "bar"
   }
