@@ -26,7 +26,7 @@ resource "google_sql_user" "sqldb_user" {
 resource "google_database_migration_service_connection_profile" "postgresprofile" {
   location = "us-central1"
   connection_profile_id = "my-profileid-${local.name_suffix}"
-  display_name = "my-profileid-${local.name_suffix}_display"
+  display_name = "my-profileid-${local.name_suffix}-display"
   labels = { 
     foo = "bar" 
   }

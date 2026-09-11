@@ -29,7 +29,7 @@ resource "google_sql_user" "source_sqldb_user" {
 resource "google_database_migration_service_connection_profile" "source_cp" {
   location              = "us-central1"
   connection_profile_id = "source-cp-${local.name_suffix}"
-  display_name          = "source-cp-${local.name_suffix}_display"
+  display_name          = "source-cp-${local.name_suffix}-display"
   labels = {
     foo = "bar"
   }
@@ -63,7 +63,7 @@ resource "google_sql_database_instance" "destination_csql" {
 resource "google_database_migration_service_connection_profile" "destination_cp" {
   location              = "us-central1"
   connection_profile_id = "destination-cp-${local.name_suffix}"
-  display_name          = "destination-cp-${local.name_suffix}_display"
+  display_name          = "destination-cp-${local.name_suffix}-display"
   labels = {
     foo = "bar"
   }
@@ -76,7 +76,7 @@ resource "google_database_migration_service_connection_profile" "destination_cp"
 resource "google_database_migration_service_migration_job" "psqltopsql" {
   location              = "us-central1"
   migration_job_id = "my-migrationid-${local.name_suffix}"
-  display_name = "my-migrationid-${local.name_suffix}_display"
+  display_name = "my-migrationid-${local.name_suffix}-display"
   labels = {
     foo = "bar"
   }
