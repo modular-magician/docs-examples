@@ -1,6 +1,6 @@
 resource "google_contact_center_insights_auto_labeling_rule" "auto_labeling_rule_basic" {
   display_name = "autolabelingrulebasic-${local.name_suffix}"
-  auto_labeling_rule_id = "autolabelingrulebasic%{id_suffix}"
+  auto_labeling_rule_id = "autolabelingrulebasic-${local.name_suffix}%{id_suffix}"
   description = "Example auto labeling rule"
   location = "us-central1"
   label_key_type = "LABEL_KEY_TYPE_CUSTOM"
