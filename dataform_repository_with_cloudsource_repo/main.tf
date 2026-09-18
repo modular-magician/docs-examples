@@ -2,7 +2,7 @@ data "google_project" "project" {
 }
 
 resource "google_sourcerepo_repository" "git_repository" {
-  name = "my/repository-${local.name_suffix}"
+  name = "my-repository-${local.name_suffix}"
 }
 
 resource "google_secret_manager_secret" "secret" {
