@@ -2,7 +2,7 @@ resource "google_sql_database_instance" "postgresqldb" {
   name             = "my-database-${local.name_suffix}"
   database_version = "POSTGRES_12"
   settings {
-    tier = "db-custom-2-13312"
+    tier = "db-f1-micro"
   }
   deletion_protection = false
 }

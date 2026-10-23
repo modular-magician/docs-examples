@@ -5,7 +5,7 @@ resource "google_sql_database_instance" "destination_csql" {
   name             = "destination-csql-${local.name_suffix}"
   database_version = "MYSQL_5_7"
   settings {
-    tier = "db-n1-standard-1"
+    tier = "db-f1-micro"
     deletion_protection_enabled = false
   }
   deletion_protection = false
