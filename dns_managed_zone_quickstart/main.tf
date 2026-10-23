@@ -1,7 +1,7 @@
 # to setup a web-server
 resource "google_compute_instance" "default" {
   name         = "dns-compute-instance-${local.name_suffix}"
-  machine_type = "g1-small"
+  machine_type = "e2-micro"
   zone         = "us-central1-b"
 
   boot_disk {
