@@ -1,6 +1,6 @@
 resource "google_compute_instance" "instance" {
   name         = "my-instance-${local.name_suffix}"
-  machine_type = "e2-medium"
+  machine_type = "e2-micro"
   zone         = "us-central1-a"
 
   boot_disk {

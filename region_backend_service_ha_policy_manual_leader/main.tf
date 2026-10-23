@@ -24,7 +24,7 @@ data "google_compute_image" "my_image" {
 
 resource "google_compute_instance" "endpoint-instance" {
   name         = "rbs-instance-${local.name_suffix}"
-  machine_type = "e2-medium"
+  machine_type = "e2-micro"
 
   boot_disk {
     initialize_params {

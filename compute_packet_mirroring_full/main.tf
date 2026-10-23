@@ -1,6 +1,6 @@
 resource "google_compute_instance" "mirror" {
   name = "my-instance-${local.name_suffix}"
-  machine_type = "e2-medium"
+  machine_type = "e2-micro"
 
   boot_disk {
     initialize_params {

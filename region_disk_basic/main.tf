@@ -11,7 +11,7 @@ resource "google_compute_region_disk" "regiondisk" {
 resource "google_compute_disk" "disk" {
   name  = "my-disk-${local.name_suffix}"
   image = "debian-cloud/debian-13"
-  size  = 50
+  size  = 10
   type  = "pd-ssd"
   zone  = "us-central1-a"
 }
