@@ -3,4 +3,5 @@ resource "google_data_fusion_instance" "zone" {
   region = "us-central1"
   zone   = "us-central1-a"
   type   = "DEVELOPER"
+  -${local.name_suffix}
 }

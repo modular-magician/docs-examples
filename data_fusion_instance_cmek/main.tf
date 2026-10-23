@@ -8,6 +8,7 @@ resource "google_data_fusion_instance" "cmek" {
   }
 
   depends_on = [google_kms_crypto_key_iam_member.crypto_key_member_gcs_sa]
+  -${local.name_suffix}
 }
 
 resource "google_kms_crypto_key" "crypto_key" {

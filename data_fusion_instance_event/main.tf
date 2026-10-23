@@ -7,6 +7,7 @@ resource "google_data_fusion_instance" "event" {
     enabled = true
     topic   = google_pubsub_topic.event.id
   }
+  -${local.name_suffix}
 }
 
 resource "google_pubsub_topic" "event" {

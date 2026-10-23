@@ -4,4 +4,5 @@ resource "google_data_fusion_instance" "data_fusion_instance_patch_revision" {
   type = "BASIC"
   version = "6.10.1"
   patch_revision = "6.10.1.5"
+  -${local.name_suffix}
 }
