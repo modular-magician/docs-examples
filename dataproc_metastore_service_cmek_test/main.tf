@@ -4,8 +4,10 @@ data "google_storage_project_service_account" "gcs_account" {}
 
 
 resource "google_dataproc_metastore_service" "default" {
-  service_id = "example-service-${local.name_suffix}"
-  location   = "us-central1"
+  service_id          = "example-service-${local.name_suffix}"
+  location            = "us-central1"
+  tier                = "DEVELOPER"
+  deletion_protection = false
 
   encryption_config {
     kms_key = "example-key-${local.name_suffix}"
