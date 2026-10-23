@@ -10,8 +10,8 @@ resource "google_cloud_run_v2_service" "default" {
       image = "us-docker.pkg.dev/cloudrun/container/hello"
       resources {
         limits = {
-          cpu    = "2"
-          memory = "1024Mi"
+          cpu    = "1"
+          memory = "512Mi"
         }
       }
     }
