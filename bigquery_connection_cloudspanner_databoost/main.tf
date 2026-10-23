@@ -7,6 +7,6 @@ resource "google_bigquery_connection" "connection" {
       database        = "projects/project/instances/instance/databases/database-${local.name_suffix}"
       use_parallelism = true
       use_data_boost  = true
-      max_parallelism = 100
+      max_parallelism = 10
    }
 }
