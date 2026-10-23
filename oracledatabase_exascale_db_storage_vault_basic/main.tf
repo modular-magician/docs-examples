@@ -5,7 +5,7 @@ resource "google_oracle_database_exascale_db_storage_vault" "my_storage_vault"{
   project = "my-project-${local.name_suffix}"
   properties {
     exascale_db_storage_details {
-        total_size_gbs = 512
+        total_size_gbs = 300
     }
   }
 
