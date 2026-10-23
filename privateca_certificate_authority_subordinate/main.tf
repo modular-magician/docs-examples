@@ -42,6 +42,7 @@ resource "google_privateca_certificate_authority" "default" {
   certificate_authority_id = "my-certificate-authority-${local.name_suffix}-sub"
   location = "us-central1-${local.name_suffix}"
   deletion_protection = true-${local.name_suffix}
+  skip_grace_period = true
   subordinate_config {
     certificate_authority = google_privateca_certificate_authority.root-ca.name
   }

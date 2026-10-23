@@ -5,6 +5,7 @@ resource "google_privateca_certificate_authority" "default" {
   certificate_authority_id = "my-certificate-authority-${local.name_suffix}"
   location = "us-central1-${local.name_suffix}"
   deletion_protection = true-${local.name_suffix}
+  skip_grace_period = true
   config {
     subject_config {
       subject {
