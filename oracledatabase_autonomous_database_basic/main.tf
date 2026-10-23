@@ -12,6 +12,11 @@ resource "google_oracle_database_autonomous_database" "myADB"{
     db_version = "19c"
     db_workload = "OLTP"
     license_type = "LICENSE_INCLUDED"
+    encryption_key {
+      provider = "ORACLE_MANAGED"
+    }
+    local_data_guard_enabled = true
+    local_adg_auto_failover_max_data_loss_limit_duration = 30
     }
   labels = {
     "label-one" = "value-one"
