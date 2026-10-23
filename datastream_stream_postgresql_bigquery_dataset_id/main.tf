@@ -1,9 +1,10 @@
 
 resource "google_bigquery_dataset" "postgres" {
-  dataset_id    = "postgres_dataset-${local.name_suffix}"
-  friendly_name = "postgres"
-  description   = "Database of postgres"
-  location      = "us-central1"
+  dataset_id                 = "postgres_dataset-${local.name_suffix}"
+  friendly_name              = "postgres"
+  description                = "Database of postgres"
+  location                   = "us-central1"
+  delete_contents_on_destroy = true
 }
 
 resource "google_datastream_stream" "default" {
