@@ -6,7 +6,7 @@ resource "google_vertex_ai_index_endpoint_deployed_index" "dedicated_resources" 
   index_endpoint    = google_vertex_ai_index_endpoint.vertex_endpoint.id
 
   dedicated_resources {
-    max_replica_count = 2
+    max_replica_count = 1
     min_replica_count = 1
 
     machine_spec {
