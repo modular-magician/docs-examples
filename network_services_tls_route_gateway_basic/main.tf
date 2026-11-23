@@ -18,7 +18,7 @@ resource "google_network_services_gateway" "default" {
     foo = "bar"
   }
   description = "my description"
-  scope = "my-scope"
+  scope = "my-scope-${local.name_suffix}"
   type = "OPEN_MESH"
   ports = [443]
 }
