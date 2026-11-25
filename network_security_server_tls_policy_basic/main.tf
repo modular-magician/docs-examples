@@ -1,5 +1,6 @@
 resource "google_network_security_server_tls_policy" "default" {
   name                   = "my-server-tls-policy-${local.name_suffix}"
+  location               = "us-central1"
   labels                 = {
     foo = "bar"
   }
